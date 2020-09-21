@@ -14,6 +14,7 @@
 		55C9137F25191014002AD559 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C9137D25191014002AD559 /* Main.storyboard */; };
 		55C9138125191016002AD559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C9138025191016002AD559 /* Assets.xcassets */; };
 		55C9138425191016002AD559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C9138225191016002AD559 /* LaunchScreen.storyboard */; };
+		55C9138C25191BAF002AD559 /* BirbTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 55C9138B25191BAF002AD559 /* BirbTileSet.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		55C9138025191016002AD559 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55C9138325191016002AD559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55C9138525191016002AD559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55C9138B25191BAF002AD559 /* BirbTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BirbTileSet.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,57 @@
 		55C9137225191014002AD559 /* Grumpy Birb */ = {
 			isa = PBXGroup;
 			children = (
-				55C9137325191014002AD559 /* AppDelegate.swift */,
-				55C9137525191014002AD559 /* GameScene.sks */,
-				55C9137925191014002AD559 /* GameScene.swift */,
-				55C9137B25191014002AD559 /* GameViewController.swift */,
-				55C9137D25191014002AD559 /* Main.storyboard */,
-				55C9138025191016002AD559 /* Assets.xcassets */,
-				55C9138225191016002AD559 /* LaunchScreen.storyboard */,
-				55C9138525191016002AD559 /* Info.plist */,
+				55C9138D251926D8002AD559 /* UI */,
+				55C9138E251926E1002AD559 /* Scenes */,
+				55C9138F251926F3002AD559 /* TileSets */,
+				55C9139225192739002AD559 /* Template */,
+				55C9139125192723002AD559 /* ViewController */,
 			);
 			path = "Grumpy Birb";
+			sourceTree = "<group>";
+		};
+		55C9138D251926D8002AD559 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				55C9138225191016002AD559 /* LaunchScreen.storyboard */,
+				55C9138025191016002AD559 /* Assets.xcassets */,
+				55C9137D25191014002AD559 /* Main.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		55C9138E251926E1002AD559 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				55C9137525191014002AD559 /* GameScene.sks */,
+				55C9137925191014002AD559 /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		55C9138F251926F3002AD559 /* TileSets */ = {
+			isa = PBXGroup;
+			children = (
+				55C9138B25191BAF002AD559 /* BirbTileSet.sks */,
+			);
+			name = TileSets;
+			sourceTree = "<group>";
+		};
+		55C9139125192723002AD559 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				55C9137B25191014002AD559 /* GameViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		55C9139225192739002AD559 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				55C9137325191014002AD559 /* AppDelegate.swift */,
+				55C9138525191016002AD559 /* Info.plist */,
+			);
+			name = Template;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C9138C25191BAF002AD559 /* BirbTileSet.sks in Resources */,
 				55C9137F25191014002AD559 /* Main.storyboard in Resources */,
 				55C9137625191014002AD559 /* GameScene.sks in Resources */,
 				55C9138125191016002AD559 /* Assets.xcassets in Resources */,
