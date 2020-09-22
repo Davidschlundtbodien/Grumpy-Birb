@@ -15,6 +15,8 @@
 		55C9138125191016002AD559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C9138025191016002AD559 /* Assets.xcassets */; };
 		55C9138425191016002AD559 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C9138225191016002AD559 /* LaunchScreen.storyboard */; };
 		55C9138C25191BAF002AD559 /* BirbTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 55C9138B25191BAF002AD559 /* BirbTileSet.sks */; };
+		55C91395251933FA002AD559 /* GameCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C91394251933FA002AD559 /* GameCamera.swift */; };
+		55C9139725195659002AD559 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9139625195659002AD559 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		55C9138325191016002AD559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55C9138525191016002AD559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55C9138B25191BAF002AD559 /* BirbTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BirbTileSet.sks; sourceTree = "<group>"; };
+		55C91394251933FA002AD559 /* GameCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCamera.swift; sourceTree = "<group>"; };
+		55C9139625195659002AD559 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		55C9137225191014002AD559 /* Grumpy Birb */ = {
 			isa = PBXGroup;
 			children = (
+				55C91393251933A9002AD559 /* CustomNodes */,
 				55C9138D251926D8002AD559 /* UI */,
 				55C9138E251926E1002AD559 /* Scenes */,
 				55C9138F251926F3002AD559 /* TileSets */,
@@ -109,8 +114,17 @@
 			children = (
 				55C9137325191014002AD559 /* AppDelegate.swift */,
 				55C9138525191016002AD559 /* Info.plist */,
+				55C9139625195659002AD559 /* Configuration.swift */,
 			);
 			name = Template;
+			sourceTree = "<group>";
+		};
+		55C91393251933A9002AD559 /* CustomNodes */ = {
+			isa = PBXGroup;
+			children = (
+				55C91394251933FA002AD559 /* GameCamera.swift */,
+			);
+			path = CustomNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,7 +201,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55C9137A25191014002AD559 /* GameScene.swift in Sources */,
+				55C9139725195659002AD559 /* Configuration.swift in Sources */,
 				55C9137C25191014002AD559 /* GameViewController.swift in Sources */,
+				55C91395251933FA002AD559 /* GameCamera.swift in Sources */,
 				55C9137425191014002AD559 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
