@@ -18,6 +18,9 @@ class GameScene: SKScene {
     var pinchRecognizer = UIPinchGestureRecognizer()
     var maxScale: CGFloat = 0
     
+    var birb = Birb(type: .red)
+    let anchor = SKNode()
+    
     override func didMove(to view: SKView) {
         setupLevel()
         setupGestureRecognizers()
@@ -40,6 +43,9 @@ class GameScene: SKScene {
         }
         
         addCamera()
+        anchor.position = CGPoint(x: mapNode.frame.midX/2, y: mapNode.frame.midY/2)
+        addChild(anchor)
+        addBirb()
     }
 
     func addCamera() {
@@ -48,6 +54,11 @@ class GameScene: SKScene {
         gameCamera.position = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         camera = gameCamera
         gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
+    }
+    
+    func addBirb() {
+        birb.position = anchor.position
+        addChild(birb)
     }
 }
 
@@ -73,8 +84,8 @@ extension GameScene {
                 }
                 
                 let locationAfterScale = convertPoint(toView: locationInView)
-                let locationDelta = CGPoint(x: location.x - locationAfterScale.x, y: location.y - locationAfterScale.y)
-                let newPosition = CGPoint(x: gameCamera.position.x + locationDelta.x, y: gameCamera.position.y + locationDelta.y)
+                let locationDelta = location - locationAfterScale
+                let newPosition = gameCamera.position + locationDelta
                 gameCamera.position = newPosition
                 sender.scale = 1.0
                 gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
