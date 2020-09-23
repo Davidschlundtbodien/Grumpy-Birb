@@ -16,6 +16,13 @@ class Birb: SKSpriteNode {
     
     var birbType: BirbType
     var grabbed = false
+    var flying = false {
+        didSet {
+            if flying {
+                physicsBody?.isDynamic = true
+            }
+        }
+    }
     
     
     init(type:BirbType) {
