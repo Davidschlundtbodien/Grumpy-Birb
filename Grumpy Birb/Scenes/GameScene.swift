@@ -160,6 +160,7 @@ class GameScene: SKScene {
         birb.physicsBody?.isDynamic = false
         birb.position = anchor.position
         addChild(birb)
+        birb.aspectScale(to: mapNode.tileSize, width: false, multiplier: 1.0)
         constraintToAnchor(active: true)
         roundState = .ready
         

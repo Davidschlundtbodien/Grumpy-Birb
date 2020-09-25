@@ -28,18 +28,9 @@ class Birb: SKSpriteNode {
     init(type:BirbType) {
         birbType = type
         
-        let color: UIColor!
-        switch type {
-        case .red:
-            color = UIColor.red
-        case .blue:
-            color = UIColor.blue
-        case .yellow:
-            color = UIColor.yellow
-        case .gray:
-            color = UIColor.lightGray
-        }
-        super.init(texture: nil, color: color, size: CGSize(width: 40.0, height: 40.0))
+        let texture = SKTexture(imageNamed: type.rawValue + "1")
+
+        super.init(texture: texture, color: UIColor.clear, size: CGSize(width: 40.0, height: 40.0))
     }
     
     required init?(coder aDecoder: NSCoder) {

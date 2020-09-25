@@ -19,6 +19,7 @@
 		55C9139725195659002AD559 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9139625195659002AD559 /* Configuration.swift */; };
 		55C91399251A5C9C002AD559 /* Birb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C91398251A5C9C002AD559 /* Birb.swift */; };
 		55C9139B251CFBE9002AD559 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9139A251CFBE9002AD559 /* Block.swift */; };
+		55C9139F251E5979002AD559 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9139E251E5979002AD559 /* SKNode+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		55C9139625195659002AD559 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		55C91398251A5C9C002AD559 /* Birb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birb.swift; sourceTree = "<group>"; };
 		55C9139A251CFBE9002AD559 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		55C9139E251E5979002AD559 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		55C9137225191014002AD559 /* Grumpy Birb */ = {
 			isa = PBXGroup;
 			children = (
+				55C9139D251E586D002AD559 /* Extensions */,
 				55C91393251933A9002AD559 /* CustomNodes */,
 				55C9138D251926D8002AD559 /* UI */,
 				55C9138E251926E1002AD559 /* Scenes */,
@@ -131,6 +134,14 @@
 				55C9139A251CFBE9002AD559 /* Block.swift */,
 			);
 			path = CustomNodes;
+			sourceTree = "<group>";
+		};
+		55C9139D251E586D002AD559 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55C9139E251E5979002AD559 /* SKNode+Extensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55C9137A25191014002AD559 /* GameScene.swift in Sources */,
+				55C9139F251E5979002AD559 /* SKNode+Extensions.swift in Sources */,
 				55C9139B251CFBE9002AD559 /* Block.swift in Sources */,
 				55C9139725195659002AD559 /* Configuration.swift in Sources */,
 				55C9137C25191014002AD559 /* GameViewController.swift in Sources */,
