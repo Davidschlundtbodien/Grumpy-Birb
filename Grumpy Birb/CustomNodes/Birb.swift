@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum BirbType: String {
-    case red, blue, yellow, gray
+    case rot, blue, yellow, gray
 }
 
 class Birb: SKSpriteNode {

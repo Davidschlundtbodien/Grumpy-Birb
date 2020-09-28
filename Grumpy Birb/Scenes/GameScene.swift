@@ -15,6 +15,8 @@ enum RoundState {
 
 class GameScene: SKScene {
     
+    var sceneManagerDelegate: SceneManagerDelegate?
+    
     var mapNode = SKTileMapNode()
     
     let gameCamera = GameCamera()
@@ -22,11 +24,11 @@ class GameScene: SKScene {
     var pinchRecognizer = UIPinchGestureRecognizer()
     var maxScale: CGFloat = 0
     
-    var birb = Birb(type: .red)
+    var birb = Birb(type: .rot)
     var birbs =  [
         Birb(type: .blue),
         Birb(type: .yellow),
-        Birb(type: .red)
+        Birb(type: .rot)
         
     ]
     
