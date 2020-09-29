@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55C9137425191014002AD559 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9137325191014002AD559 /* AppDelegate.swift */; };
-		55C9137625191014002AD559 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 55C9137525191014002AD559 /* GameScene.sks */; };
+		55C9137625191014002AD559 /* GameScene_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 55C9137525191014002AD559 /* GameScene_1.sks */; };
 		55C9137A25191014002AD559 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9137925191014002AD559 /* GameScene.swift */; };
 		55C9137C25191014002AD559 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9137B25191014002AD559 /* GameViewController.swift */; };
 		55C9137F25191014002AD559 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C9137D25191014002AD559 /* Main.storyboard */; };
@@ -22,12 +22,13 @@
 		55C9139F251E5979002AD559 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C9139E251E5979002AD559 /* SKNode+Extensions.swift */; };
 		55C913A12522787C002AD559 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913A02522787C002AD559 /* MenuScene.swift */; };
 		55C913A32522788F002AD559 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913A22522788F002AD559 /* LevelScene.swift */; };
+		55C913A52523AAF4002AD559 /* SpriteKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913A42523AAF4002AD559 /* SpriteKitButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		55C9137025191014002AD559 /* Grumpy Birb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grumpy Birb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C9137325191014002AD559 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		55C9137525191014002AD559 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		55C9137525191014002AD559 /* GameScene_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_1.sks; sourceTree = "<group>"; };
 		55C9137925191014002AD559 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		55C9137B25191014002AD559 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		55C9137E25191014002AD559 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		55C9139E251E5979002AD559 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
 		55C913A02522787C002AD559 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		55C913A22522788F002AD559 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
+		55C913A42523AAF4002AD559 /* SpriteKitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteKitButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,7 @@
 		55C9138E251926E1002AD559 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				55C9137525191014002AD559 /* GameScene.sks */,
+				55C9137525191014002AD559 /* GameScene_1.sks */,
 				55C9137925191014002AD559 /* GameScene.swift */,
 				55C913A02522787C002AD559 /* MenuScene.swift */,
 				55C913A22522788F002AD559 /* LevelScene.swift */,
@@ -135,6 +137,7 @@
 		55C91393251933A9002AD559 /* CustomNodes */ = {
 			isa = PBXGroup;
 			children = (
+				55C913A42523AAF4002AD559 /* SpriteKitButton.swift */,
 				55C91394251933FA002AD559 /* GameCamera.swift */,
 				55C91398251A5C9C002AD559 /* Birb.swift */,
 				55C9139A251CFBE9002AD559 /* Block.swift */,
@@ -210,7 +213,7 @@
 			files = (
 				55C9138C25191BAF002AD559 /* BirbTileSet.sks in Resources */,
 				55C9137F25191014002AD559 /* Main.storyboard in Resources */,
-				55C9137625191014002AD559 /* GameScene.sks in Resources */,
+				55C9137625191014002AD559 /* GameScene_1.sks in Resources */,
 				55C9138125191016002AD559 /* Assets.xcassets in Resources */,
 				55C9138425191016002AD559 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -227,6 +230,7 @@
 				55C9139F251E5979002AD559 /* SKNode+Extensions.swift in Sources */,
 				55C9139B251CFBE9002AD559 /* Block.swift in Sources */,
 				55C913A12522787C002AD559 /* MenuScene.swift in Sources */,
+				55C913A52523AAF4002AD559 /* SpriteKitButton.swift in Sources */,
 				55C9139725195659002AD559 /* Configuration.swift in Sources */,
 				55C9137C25191014002AD559 /* GameViewController.swift in Sources */,
 				55C91395251933FA002AD559 /* GameCamera.swift in Sources */,
