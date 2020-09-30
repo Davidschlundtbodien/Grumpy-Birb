@@ -8,6 +8,10 @@
 
 import CoreGraphics
 
+struct Levels {
+    static var levelsDictionary = [String:Any]()
+}
+
 struct ZPositions {
     static let background: CGFloat = 0
     static let obstacles: CGFloat = 1

@@ -25,19 +25,27 @@ class GameScene: SKScene {
     var maxScale: CGFloat = 0
     
     var birb = Birb(type: .rot)
-    var birbs =  [
-        Birb(type: .blue),
-        Birb(type: .yellow),
-        Birb(type: .rot)
-        
-    ]
-    
+    var birbs =  [Birb]()
     let anchor = SKNode()
+    
+    var level: Int?
     
     var roundState = RoundState.ready
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
+        
+        guard let level = level else {
+            return
+        }
+        guard let levelData = Level(level: level) else {
+            return
+        }
+        for birbColor in levelData.birbs {
+            if let newBirbType = BirbType(rawValue: birbColor) {
+                birbs.append(Birb(type: newBirbType))
+            }
+        }
         
         setupLevel()
         setupGestureRecognizers()
@@ -199,6 +207,11 @@ extension GameScene: SKPhysicsContactDelegate {
                 block.impact(with: Int(contact.collisionImpulse))
             } else if let block = contact.bodyA.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
+            }
+            if let birb = contact.bodyA.node as? Birb {
+                birb.flying = false
+            } else if let birb = contact.bodyB.node as? Birb {
+                birb.flying = false
             }
         case PhysicsCatagory.block | PhysicsCatagory.block:
             if let block = contact.bodyA.node as? Block {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Level_3</key>
+	<dict>
+		<key>Birbs</key>
+		<array>
+			<string>gray</string>
+			<string>blue</string>
+			<string>blue</string>
+			<string>rot</string>
+			<string>blue</string>
+		</array>
+	</dict>
+	<key>Level_2</key>
+	<dict>
+		<key>Birbs</key>
+		<array>
+			<string>gray</string>
+			<string>yellow</string>
+			<string>gray</string>
+			<string>rot</string>
+		</array>
+	</dict>
+	<key>Level_1</key>
+	<dict>
+		<key>Birbs</key>
+		<array>
+			<string>rot</string>
+			<string>blue</string>
+			<string>blue</string>
+			<string>yellow</string>
+		</array>
+	</dict>
+</dict>
+</plist>
