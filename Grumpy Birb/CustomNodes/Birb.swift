@@ -20,14 +20,18 @@ class Birb: SKSpriteNode {
         didSet {
             if flying {
                 physicsBody?.isDynamic = true
+                animateFlight(active: true)
+            } else {
+                animateFlight(active: false)
             }
         }
     }
     
+    let flyingFrames: [SKTexture]
     
     init(type:BirbType) {
         birbType = type
-        
+        flyingFrames = AnimationHelper.loadTextures(from: SKTextureAtlas(named: type.rawValue), withName: type.rawValue)
         let texture = SKTexture(imageNamed: type.rawValue + "1")
 
         super.init(texture: texture, color: UIColor.clear, size: CGSize(width: 40.0, height: 40.0))
@@ -37,4 +41,11 @@ class Birb: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func animateFlight(active: Bool) {
+        if active {
+            run(SKAction.repeatForever(SKAction.animate(with: flyingFrames, timePerFrame: 0.1, resize: false, restore: true)))
+        } else {
+            removeAllActions()
+        }
+    }
 }

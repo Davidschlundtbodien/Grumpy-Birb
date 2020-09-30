@@ -23,6 +23,9 @@
 		55C913A12522787C002AD559 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913A02522787C002AD559 /* MenuScene.swift */; };
 		55C913A32522788F002AD559 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913A22522788F002AD559 /* LevelScene.swift */; };
 		55C913A52523AAF4002AD559 /* SpriteKitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913A42523AAF4002AD559 /* SpriteKitButton.swift */; };
+		55C913A72523CE92002AD559 /* GameScene_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 55C913A62523CE92002AD559 /* GameScene_2.sks */; };
+		55C913A92523E533002AD559 /* GameScene_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 55C913A82523E533002AD559 /* GameScene_3.sks */; };
+		55C913AC2524EF01002AD559 /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C913AB2524EF01002AD559 /* AnimationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		55C913A02522787C002AD559 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		55C913A22522788F002AD559 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = "<group>"; };
 		55C913A42523AAF4002AD559 /* SpriteKitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteKitButton.swift; sourceTree = "<group>"; };
+		55C913A62523CE92002AD559 /* GameScene_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_2.sks; sourceTree = "<group>"; };
+		55C913A82523E533002AD559 /* GameScene_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene_3.sks; sourceTree = "<group>"; };
+		55C913AB2524EF01002AD559 /* AnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		55C9137225191014002AD559 /* Grumpy Birb */ = {
 			isa = PBXGroup;
 			children = (
+				55C913AA2524ECAE002AD559 /* Helper Files */,
 				55C9139D251E586D002AD559 /* Extensions */,
 				55C91393251933A9002AD559 /* CustomNodes */,
 				55C9138D251926D8002AD559 /* UI */,
@@ -101,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				55C9137525191014002AD559 /* GameScene_1.sks */,
+				55C913A62523CE92002AD559 /* GameScene_2.sks */,
+				55C913A82523E533002AD559 /* GameScene_3.sks */,
 				55C9137925191014002AD559 /* GameScene.swift */,
 				55C913A02522787C002AD559 /* MenuScene.swift */,
 				55C913A22522788F002AD559 /* LevelScene.swift */,
@@ -151,6 +160,14 @@
 				55C9139E251E5979002AD559 /* SKNode+Extensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		55C913AA2524ECAE002AD559 /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				55C913AB2524EF01002AD559 /* AnimationHelper.swift */,
+			);
+			name = "Helper Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +230,9 @@
 			files = (
 				55C9138C25191BAF002AD559 /* BirbTileSet.sks in Resources */,
 				55C9137F25191014002AD559 /* Main.storyboard in Resources */,
+				55C913A92523E533002AD559 /* GameScene_3.sks in Resources */,
 				55C9137625191014002AD559 /* GameScene_1.sks in Resources */,
+				55C913A72523CE92002AD559 /* GameScene_2.sks in Resources */,
 				55C9138125191016002AD559 /* Assets.xcassets in Resources */,
 				55C9138425191016002AD559 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -234,6 +253,7 @@
 				55C9139725195659002AD559 /* Configuration.swift in Sources */,
 				55C9137C25191014002AD559 /* GameViewController.swift in Sources */,
 				55C91395251933FA002AD559 /* GameCamera.swift in Sources */,
+				55C913AC2524EF01002AD559 /* AnimationHelper.swift in Sources */,
 				55C91399251A5C9C002AD559 /* Birb.swift in Sources */,
 				55C9137425191014002AD559 /* AppDelegate.swift in Sources */,
 				55C913A32522788F002AD559 /* LevelScene.swift in Sources */,
