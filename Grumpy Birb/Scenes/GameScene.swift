@@ -146,6 +146,7 @@ class GameScene: SKScene {
         
         anchor.position = CGPoint(x: mapNode.frame.midX/2, y: mapNode.frame.midY/2)
         addChild(anchor)
+        addSlingshot()
         addBirb()
     }
 
@@ -155,6 +156,15 @@ class GameScene: SKScene {
         gameCamera.position = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         camera = gameCamera
         gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
+    }
+    
+    func addSlingshot() {
+        let slingshot = SKSpriteNode(imageNamed: "slingshot")
+        let scaleSize = CGSize(width: 0, height: mapNode.frame.midY/2)
+        slingshot.aspectScale(to: scaleSize, width: false, multiplier: 1.0)
+        slingshot.position = CGPoint(x: anchor.position.x, y: mapNode.tileSize.height + slingshot.size.height/2)
+        slingshot.zPosition = ZPositions.obstacles
+        mapNode.addChild(slingshot)
     }
     
     func addBirb() {
@@ -169,8 +179,9 @@ class GameScene: SKScene {
         birb.physicsBody?.collisionBitMask = PhysicsCatagory.block | PhysicsCatagory.edge
         birb.physicsBody?.isDynamic = false
         birb.position = anchor.position
+        birb.zPosition = ZPositions.birb
         addChild(birb)
-        birb.aspectScale(to: mapNode.tileSize, width: false, multiplier: 1.0)
+        birb.aspectScale(to: mapNode.tileSize, width: true, multiplier: 1.0)
         constraintToAnchor(active: true)
         roundState = .ready
         
