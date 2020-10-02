@@ -26,6 +26,13 @@ class GameScene: SKScene {
     
     var birb = Birb(type: .rot)
     var birbs =  [Birb]()
+    var enemies = 0 {
+        didSet {
+            if enemies < 1 {
+                print("Alls Enemies Destroyed")
+            }
+        }
+    }
     let anchor = SKNode()
     
     var level: Int?
@@ -123,17 +130,22 @@ class GameScene: SKScene {
         for child in mapNode.children {
             if let child = child as? SKSpriteNode {
                 guard let name = child.name else { continue }
-                if !["wood", "glass", "stone"].contains(name) { continue }
-                guard let type = BlockType(rawValue: name) else { continue }
-                let block = Block(type: type)
-                block.size = child.size
-                block.position = child.position
-                block.zRotation = child.zRotation
-                block.zPosition = ZPositions.obstacles
-                block .createPhysicsBody()
-                mapNode.addChild(block)
-                child.removeFromParent()
-                
+                switch name {
+                    case "wood", "stone", "glass":
+                        if let block = createBlock(from: child, name: name) {
+                            mapNode.addChild(block)
+                            child.removeFromParent()
+                        }
+                    case "orange":
+                        if let enemy = createEnemy(from: child, name: name) {
+                            mapNode.addChild(enemy)
+                            enemies += 1
+                            child.removeFromParent()
+                    }
+                    default:
+                        break
+                    
+                }
 
             }
         }
@@ -169,7 +181,7 @@ class GameScene: SKScene {
     
     func addBirb() {
         if birbs.isEmpty {
-            print("Birbs Gone")
+            print("Game Over")
             return
         }
         birb = birbs.removeFirst()
@@ -186,6 +198,27 @@ class GameScene: SKScene {
         roundState = .ready
         
     }
+    
+    func createBlock( from placeholder: SKSpriteNode, name: String) -> Block? {
+        guard let type = BlockType(rawValue: name) else { return nil }
+        let block = Block(type: type)
+        block.size = placeholder.size
+        block.position = placeholder.position
+        block.zRotation = placeholder.zRotation
+        block.zPosition = ZPositions.obstacles
+        block .createPhysicsBody()
+        return block
+    }
+    
+    func createEnemy(from placeholder: SKSpriteNode, name: String) -> Enemy? {
+        guard let enemyType = EnemyType(rawValue: name) else { return nil }
+        let enemy = Enemy(type: enemyType)
+        enemy.size = placeholder.size
+        enemy.position = placeholder.position
+        enemy.createPhysicsBody()
+        return enemy
+    }
+        
     
     func constraintToAnchor(active: Bool) {
         if active {
@@ -233,6 +266,16 @@ extension GameScene: SKPhysicsContactDelegate {
             }
         case PhysicsCatagory.birb | PhysicsCatagory.edge:
             birb.flying = false
+        case PhysicsCatagory.birb | PhysicsCatagory.enemy:
+            if let enemy = contact.bodyA.node as? Enemy {
+                if enemy.impact(with: Int(contact.collisionImpulse)) {
+                    enemies -= 1
+                }
+            } else if let enemy = contact.bodyB.node as? Enemy {
+                if enemy.impact(with: Int(contact.collisionImpulse)) {
+                    enemies -= 1
+                }
+            }
         default:
             break
         }
