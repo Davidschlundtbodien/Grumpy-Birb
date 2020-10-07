@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 enum RoundState {
-    case ready, flying, finished, animating
+    case ready, flying, finished, animating, gameOver
 }
 
 class GameScene: SKScene {
@@ -30,7 +30,8 @@ class GameScene: SKScene {
         //Checks for remaining enemies
         didSet {
             if enemies < 1 {
-                print("Alls Enemies Destroyed")
+                roundState = .gameOver
+                presentPopup(victory: true)
             }
         }
     }
@@ -85,6 +86,8 @@ class GameScene: SKScene {
                 self.addBirb()
             })
         case .animating:
+            break
+        case .gameOver:
             break
         }
         
@@ -191,7 +194,8 @@ class GameScene: SKScene {
     //Birbs
     func addBirb() {
         if birbs.isEmpty {
-            print("Game Over")
+            roundState = .gameOver
+            presentPopup(victory: false)
             return
         }
         birb = birbs.removeFirst()
@@ -242,6 +246,21 @@ class GameScene: SKScene {
         }
     }
     
+    //Popups
+    func presentPopup(victory: Bool) {
+        if victory {
+            let popup = Popup(type: 0, size: frame.size)
+            popup.zPosition = ZPositions.hudBackground
+            popup.popupButtonHandlerDelegate = self
+            gameCamera.addChild(popup)
+        } else {
+            let popup = Popup(type: 1, size: frame.size)
+            popup.zPosition = ZPositions.hudBackground
+            popup.popupButtonHandlerDelegate = self
+            gameCamera.addChild(popup)
+        }
+    }
+    
     //After flight
     override func didSimulatePhysics() {
         guard let physicsBody = birb.physicsBody else { return }
@@ -254,6 +273,24 @@ class GameScene: SKScene {
 }
 
 //Extensions
+
+extension GameScene: PopupButtonHandlerDelegate {
+    func menuTapped() {
+        sceneManagerDelegate?.presentLevelScene()
+    }
+    
+    func nextTapped() {
+        if let level = level {
+            sceneManagerDelegate?.presentGameSceneFor(level: level + 1)
+        }
+    }
+    
+    func retryTapped() {
+        if let level = level {
+            sceneManagerDelegate?.presentGameSceneFor(level: level)
+        }
+    }
+}
 
 extension GameScene: SKPhysicsContactDelegate {
     //Physics, contact and collision
