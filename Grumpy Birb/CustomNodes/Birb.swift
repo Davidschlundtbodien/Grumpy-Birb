@@ -16,6 +16,7 @@ class Birb: SKSpriteNode {
     
     var birbType: BirbType
     var grabbed = false
+    //Flying state
     var flying = false {
         didSet {
             if flying {
@@ -27,6 +28,7 @@ class Birb: SKSpriteNode {
         }
     }
     
+    //Flying animation array
     let flyingFrames: [SKTexture]
     
     init(type:BirbType) {
@@ -41,6 +43,7 @@ class Birb: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //Flight animation
     func animateFlight(active: Bool) {
         if active {
             run(SKAction.repeatForever(SKAction.animate(with: flyingFrames, timePerFrame: 0.1, resize: false, restore: true)))

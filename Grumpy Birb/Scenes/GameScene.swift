@@ -27,6 +27,7 @@ class GameScene: SKScene {
     var birb = Birb(type: .rot)
     var birbs =  [Birb]()
     var enemies = 0 {
+        //Checks for remaining enemies
         didSet {
             if enemies < 1 {
                 print("Alls Enemies Destroyed")
@@ -39,6 +40,7 @@ class GameScene: SKScene {
     
     var roundState = RoundState.ready
     
+    //On Scene load
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
@@ -59,6 +61,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Round State
         switch roundState {
         case .ready:
             if let touch = touches.first {
@@ -74,6 +77,7 @@ class GameScene: SKScene {
         case .finished:
             guard let view = view else { return }
             roundState = .animating
+            //Camera Pan back to Birb spawn
             let moveCameraBackAction = SKAction.move(to: CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2), duration: 2.0)
             moveCameraBackAction.timingMode = .easeInEaseOut
             gameCamera.run(moveCameraBackAction, completion: {
@@ -94,7 +98,7 @@ class GameScene: SKScene {
             }
         }
     }
-    
+    //Birb release
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if birb.grabbed {
             gameCamera.setConstraints(with: self, and: mapNode.frame, to: birb)
@@ -110,6 +114,7 @@ class GameScene: SKScene {
         }
     }
     
+    //Pinch and pan gestures
     func setupGestureRecognizers() {
         guard let view = view else { return }
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
@@ -119,6 +124,7 @@ class GameScene: SKScene {
         view.addGestureRecognizer(pinchRecognizer)
     }
     
+    //Setup Level w/ camera and replace placeholder nodes
     func setupLevel() {
         if let mapNode = childNode(withName: "Tile Map Node") as? SKTileMapNode {
             self.mapNode = mapNode
@@ -126,7 +132,7 @@ class GameScene: SKScene {
         }
         
         addCamera()
-        
+        //Replaces blocks and enemy placeholders w/ sk nodes
         for child in mapNode.children {
             if let child = child as? SKSpriteNode {
                 guard let name = child.name else { continue }
@@ -150,6 +156,7 @@ class GameScene: SKScene {
             }
         }
         
+        //Border edge physics
         let physicsRect = CGRect(x: 0, y: mapNode.tileSize.height, width: mapNode.frame.size.width, height: mapNode.frame.size.height - mapNode.tileSize.height)
         physicsBody = SKPhysicsBody(edgeLoopFrom: physicsRect)
         physicsBody?.categoryBitMask = PhysicsCatagory.edge
@@ -161,7 +168,8 @@ class GameScene: SKScene {
         addSlingshot()
         addBirb()
     }
-
+    
+    //Camera
     func addCamera() {
         guard let view = view else { return }
         addChild(gameCamera)
@@ -170,6 +178,7 @@ class GameScene: SKScene {
         gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
     }
     
+    //Birb Slingshot
     func addSlingshot() {
         let slingshot = SKSpriteNode(imageNamed: "slingshot")
         let scaleSize = CGSize(width: 0, height: mapNode.frame.midY/2)
@@ -179,6 +188,7 @@ class GameScene: SKScene {
         mapNode.addChild(slingshot)
     }
     
+    //Birbs
     func addBirb() {
         if birbs.isEmpty {
             print("Game Over")
@@ -199,6 +209,7 @@ class GameScene: SKScene {
         
     }
     
+    //Blocks
     func createBlock( from placeholder: SKSpriteNode, name: String) -> Block? {
         guard let type = BlockType(rawValue: name) else { return nil }
         let block = Block(type: type)
@@ -210,6 +221,7 @@ class GameScene: SKScene {
         return block
     }
     
+    //Enemies
     func createEnemy(from placeholder: SKSpriteNode, name: String) -> Enemy? {
         guard let enemyType = EnemyType(rawValue: name) else { return nil }
         let enemy = Enemy(type: enemyType)
@@ -219,7 +231,7 @@ class GameScene: SKScene {
         return enemy
     }
         
-    
+    //Pull constraints for birbs in slingshot
     func constraintToAnchor(active: Bool) {
         if active {
             let slingRange = SKRange(lowerLimit: 0.0, upperLimit: birb.size.width*3)
@@ -230,6 +242,7 @@ class GameScene: SKScene {
         }
     }
     
+    //After flight
     override func didSimulatePhysics() {
         guard let physicsBody = birb.physicsBody else { return }
         if roundState == .flying && physicsBody.isResting {
@@ -240,12 +253,15 @@ class GameScene: SKScene {
     }
 }
 
+//Extensions
+
 extension GameScene: SKPhysicsContactDelegate {
-    
+    //Physics, contact and collision
     func didBegin(_ contact: SKPhysicsContact) {
         let mask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         switch mask {
+        //Birb vs block and block vs edge
         case PhysicsCatagory.birb | PhysicsCatagory.block, PhysicsCatagory.block | PhysicsCatagory.edge:
             if let block = contact.bodyB.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
@@ -257,6 +273,7 @@ extension GameScene: SKPhysicsContactDelegate {
             } else if let birb = contact.bodyB.node as? Birb {
                 birb.flying = false
             }
+        //Block vs Block
         case PhysicsCatagory.block | PhysicsCatagory.block:
             if let block = contact.bodyA.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
@@ -264,8 +281,10 @@ extension GameScene: SKPhysicsContactDelegate {
             if let block = contact.bodyB.node as? Block {
                 block.impact(with: Int(contact.collisionImpulse))
             }
+        //Birb vs Edge
         case PhysicsCatagory.birb | PhysicsCatagory.edge:
             birb.flying = false
+        //Birb vs Enemy
         case PhysicsCatagory.birb | PhysicsCatagory.enemy:
             if let enemy = contact.bodyA.node as? Enemy {
                 if enemy.impact(with: Int(contact.collisionImpulse)) {
@@ -283,7 +302,7 @@ extension GameScene: SKPhysicsContactDelegate {
 }
 
 extension GameScene {
-    
+    //Pinch and Pan gesture extensions
     @objc func pan(sender: UIPanGestureRecognizer) {
         guard let view = view else { return }
         let translation = sender.translation(in: view) * gameCamera.yScale

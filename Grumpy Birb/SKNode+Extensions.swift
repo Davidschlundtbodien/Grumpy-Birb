@@ -9,7 +9,7 @@
 import SpriteKit
 
 extension SKNode {
-    
+    // Image scaling helper for SK nodes
     func aspectScale(to size: CGSize, width: Bool, multiplier:CGFloat) {
         let scale = width ? (size.width * multiplier) / self.frame.size.width : (size.height * multiplier) / self.frame.size.height
         self.setScale(scale)

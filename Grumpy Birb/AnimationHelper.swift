@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+// Animation helper for birb frames 1-4 in assets
 class AnimationHelper {
     static func loadTextures(from atlas:SKTextureAtlas, withName name: String) -> [SKTexture] {
         var textures = [SKTexture]()

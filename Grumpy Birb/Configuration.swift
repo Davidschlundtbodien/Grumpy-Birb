@@ -8,10 +8,12 @@
 
 import CoreGraphics
 
+//Levels
 struct Levels {
     static var levelsDictionary = [String:Any]()
 }
 
+//Object positions on the Z axis
 struct ZPositions {
     static let background: CGFloat = 0
     static let obstacles: CGFloat = 1
@@ -20,6 +22,7 @@ struct ZPositions {
     static let hudLabel: CGFloat = 11
 }
 
+//Object physics
 struct PhysicsCatagory {
     static let none: UInt32 = 0
     static let all: UInt32 = UInt32.max
@@ -29,16 +32,17 @@ struct PhysicsCatagory {
     static let enemy: UInt32 = 0x1 << 3
 }
 
+//CGPoint Extension
 extension CGPoint {
-    
+    //Addition
     static public func + (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x + right.x, y: left.y + right.y)
     }
-    
+    //Subtraction
     static public func - (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x - right.x, y: left.y - right.y)
     }
-    
+    //Multiplication
     static public func * (left: CGPoint, right:CGFloat) -> CGPoint {
         return CGPoint(x: left.x * right, y: left.y * right)
     }

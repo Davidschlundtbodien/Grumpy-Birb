@@ -29,6 +29,7 @@ class SpriteKitButton: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //Button pressed
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         defaultButton.alpha = 0.75
         
@@ -47,6 +48,7 @@ class SpriteKitButton: SKSpriteNode {
         
     }
     
+    //Button released
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch: UITouch = touches.first! as UITouch
@@ -60,6 +62,7 @@ class SpriteKitButton: SKSpriteNode {
         
     }
     
+    //Button released
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         defaultButton.alpha = 1.0
     }

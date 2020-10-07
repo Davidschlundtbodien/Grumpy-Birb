@@ -11,7 +11,7 @@ import Foundation
 struct Level {
     let birbs : [String]
     
-    
+    // Pulls birb array from level Plist
     init?(level: Int) {
         guard let levelDictionary = Levels.levelsDictionary["Level_\(level)"] as? [String:Any] else {
             return nil

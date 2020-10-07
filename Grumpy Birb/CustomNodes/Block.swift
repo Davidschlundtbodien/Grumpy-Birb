@@ -19,6 +19,7 @@ class Block: SKSpriteNode {
     let damageThreshold: Int
     
     init(type: BlockType) {
+        //Block health based on type
         self.type = type
         switch type {
         case .wood:
@@ -28,6 +29,7 @@ class Block: SKSpriteNode {
         case .glass:
             health = 50
         }
+        //Threshold for blocks to change texture
         damageThreshold = health/2
         
         let texture = SKTexture(imageNamed: type.rawValue)
@@ -38,6 +40,7 @@ class Block: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //Block physics
     func createPhysicsBody () {
         physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.isDynamic = true
@@ -46,6 +49,7 @@ class Block: SKSpriteNode {
         physicsBody?.collisionBitMask = PhysicsCatagory.all
     }
     
+    //Block health reduction based on impact
     func impact(with force: Int) {
         health -= force
         print(health)

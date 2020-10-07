@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Levels Plist load
         if let url = Bundle.main.url(forResource: "Levels", withExtension: "plist") {
             do {
                 let data = try Data(contentsOf: url)

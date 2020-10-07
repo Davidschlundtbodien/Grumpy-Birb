@@ -30,11 +30,13 @@ class Enemy: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: CGSize.zero)
         animateEnemy()
     }
-        
+    
+    // Short enemy animation
     func animateEnemy() {
         run(SKAction.repeatForever(SKAction.animate(with: animatioinFrames, timePerFrame: 0.3, resize: false, restore: true)))
     }
-        
+       
+    //Enemy physics
     func createPhysicsBody() {
         physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.isDynamic = true
@@ -42,7 +44,8 @@ class Enemy: SKSpriteNode {
         physicsBody?.contactTestBitMask = PhysicsCatagory.all
         physicsBody?.collisionBitMask = PhysicsCatagory.all
     }
-        
+    
+    //Enemy health reduction based of impact
     func impact(with force: Int) -> Bool {
         health -= force
         if health < 1 {
